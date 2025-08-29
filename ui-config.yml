@@ -12,7 +12,7 @@ antora:
     - name: module-02
       label: "Ansible Facts Playbook"
       solveButton: true
-    - name: module-02
+    - name: module-03
       label: "Using the Debug Module"
       solveButton: false
 

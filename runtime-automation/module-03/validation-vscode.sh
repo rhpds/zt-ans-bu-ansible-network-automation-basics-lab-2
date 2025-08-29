@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+#set -euxo pipefail
 
 if [ ! -f /home/rhel/facts.yml ]; then
     echo "No file was found at /home/rhel/facts.yml"

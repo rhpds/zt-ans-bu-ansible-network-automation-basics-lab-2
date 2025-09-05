@@ -7,12 +7,12 @@ if [ ! -f /home/rhel/facts.yml ]; then
     exit 1
 fi
 
-if ! grep "facts" /home/rhel/facts.yml; then
+if ! grep "facts:" /home/rhel/facts.yml; then
     echo "The facts.yml playbook doesn't contain the facts module"
     exit 1
 fi
 
-if ! grep "debug" /home/rhel/facts.yml; then
+if ! grep "debug:" /home/rhel/facts.yml; then
     echo "The facts.yml playbook doesn't contain the debug module"
     exit 1
 fi

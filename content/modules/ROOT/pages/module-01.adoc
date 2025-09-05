@@ -25,13 +25,17 @@ link:red.ht/NetworkDocs[red.ht/NetworkDocs]
 +
 [source,bash]
 ----
-$ ansible-navigator doc -l -m stdout
+ansible-navigator doc -l -m stdout
+----
+
+.You will see the following output:
+----
 add_host
 amazon.aws.aws_az_facts
 amazon.aws.aws_caller_facts
 amazon.aws.aws_caller_info
 ----
-
++
 NOTE: A formal introduction to ansible-navigator and how it can be used to run playbooks in the following exercise.
 
 == Lets get started

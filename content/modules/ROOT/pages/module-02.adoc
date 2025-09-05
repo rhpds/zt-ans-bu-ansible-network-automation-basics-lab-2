@@ -1,49 +1,52 @@
 = Ansible Facts Playbook
 
-== Everything begins and starts with facts
+Everything begins and starts with facts
 
-=== More about Modules
+== More about Modules
 
-Modules do the actual work in Ansible, they are what gets executed in each playbook task.
+* Modules do the actual work in Ansible, they are what gets executed in each playbook task.
 
-* Typically written in Python (but not limited to it)
-* Modules can be idempotent
-* Modules take user input in the form of parameters
+** Typically written in Python (but not limited to it)
+** Modules can be idempotent
+** Modules take user input in the form of parameters
 
-=== Network modules
+== Network modules
 
-Ansible modules for network automation typically references the vendor OS followed by the module name.
+* Ansible modules for network automation typically references the vendor OS followed by the module name.
 
-`namename.collection.module`
+** `namename.collection.module`
+** namespace.collection.`facts`
+** namespace.collection.`command`
+** namespace.collection.`config`
+** namespace.collection.`resource`
 
-* namespace.collection.`facts`
-* namespace.collection.`command`
-* namespace.collection.`config`
-* namespace.collection.`resource`
-
++
 .For example:
-* Arista EOS = `arista.eos.`
-* Cisco IOS/IOS-XE = `cisco.ios.`
-* Juniper Junos = `junipsnetworks.junos.`
+** Arista EOS = `arista.eos.`
+** Cisco IOS/IOS-XE = `cisco.ios.`
+** Juniper Junos = `junipsnetworks.junos.`
 
-
-image::https://github.com/IPvSean/pictures_for_github/blob/master/fact_modules.png?raw=true[picture of facts]
-
-Fact modules are unique per platform.  For Cisco IOS-XE you would use cisco.ios.facts, for Juniper Junos you would use junipernetworks.junos.facts and so on and so forth.
 
 === What are facts?
 
-Structured data, the Ansible way
+* Fact modules are unique per platform. For Cisco IOS-XE you would use cisco.ios.facts, for Juniper Junos you would use junipernetworks.junos.facts and so on and so forth.
++
+image::https://github.com/IPvSean/pictures_for_github/blob/master/fact_modules.png?raw=true[picture of facts]
 
+
+* Structured data, the Ansible way
+
++
 image::https://github.com/IPvSean/pictures_for_github/blob/master/transform_data_facts.png?raw=true[picture of transform facts]
 
++
 image::https://raw.githubusercontent.com/IPvSean/pictures_for_github/master/transform_data_facts2.png[Ansible trasnforms pics]
 
-=== Lets get started
+== Lets get started
 
 That is the end of of your lab briefing!
 
-Once the lab is setup you can click the Green start button image:https://github.com/IPvSean/pictures_for_github/blob/master/start_button.png?raw=true[start button,100] in the bottom right corner of this window.
+// Once the lab is setup you can click the Green start button image:https://github.com/IPvSean/pictures_for_github/blob/master/start_button.png?raw=true[start button,100] in the bottom right corner of this window.
 
 === Step 1 - Creating the play
 
@@ -56,51 +59,54 @@ Ansible Playbooks are https://yaml.org/[YAML files]. YAML is a structured encodi
 * For simplicity please name the playbook: `facts.yml`
 
 * Enter the following play definition into facts.yml:
-
++
+[source,yaml]
 ----
 ---
 - name: gather information from routers
   hosts: cisco
   gather_facts: no
 ----
++
+[NOTE]
+====
+*Here is an explanation of each line:*
 
-.Here is an explanation of each line:
 * The first line, `---` indicates that this is a YAML file.
 * The `- name:` keyword is an optional description for this particular Ansible Playbook.
 * The `hosts:` keyword means this playbook against the group *cisco* defined in the inventory file.
 * The `gather_facts: no` turns of auto-fact gathering, we are going to use a module instead.
+====
 
 === Step 2 - Create the facts task
 
-Append the following to your playbook:
-
+* Append the following to your playbook:
++
+[source,yaml]
 ----
   tasks:
     - name: gather router facts
       cisco.ios.facts:
 ----
-
-[NOTE]
-====
-A play is a list of tasks. Modules are pre-written code that perform the task.
-====
++
+NOTE: A play is a list of tasks. Modules are pre-written code that perform the task.
 
 === Step 3 - Executing the playbook
 
-Click on the terminal tab. Execute the Ansible Playbook by running ansible-navigator:
-
+* Click on the terminal tab. Execute the Ansible Playbook by running ansible-navigator:
++
+[source,shell]
 ----
 ansible-navigator run facts.yml
 ----
 
-This will open an interactive session while the playbook interacts.
+* This will open an interactive session while the playbook interacts.
 
-* To zoom into the playbook output we can press 0 which will show us a host-centric view. Since there is only one host, there is just one option.
-* To see the verbose output of cisco press 0 one more time to zoom into the module return values.
+** To zoom into the playbook output we can press 0 which will show us a host-centric view. Since there is only one host, there is just one option.
 
-You can scroll down to view any facts that were collected from the Cisco network device.
+** To see the verbose output of cisco press 0 one more time to zoom into the module return values.
+
+** You can scroll down to view any facts that were collected from the Cisco network device.
 
 === Complete
 You have completed challenge 2!
-
-

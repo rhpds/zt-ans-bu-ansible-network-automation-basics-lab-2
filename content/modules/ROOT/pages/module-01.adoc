@@ -1,27 +1,28 @@
 = Using Ansible documentation
 
-== For this challenge we will examine an already created Ansible Playbook
+For this challenge we will examine an already created Ansible Playbook
 
 
-=== Network Facts
+== Network Facts
 
-Topics Covered:
+*Topics Covered:*
+
 - Ansible Documentation
 - Facts for Network Devices
 - The debug module
 
-=== "Ansible for Network Automation" Documentation
-
+== Ansible for Network Automation Documentation
+* Specific Network Automation Section for Ansible including a getting started guide
++
 image::https://github.com/IPvSean/pictures_for_github/blob/master/network_docs.png?raw=true[picture of documentation for network automation]
-
++
 link:red.ht/NetworkDocs[red.ht/NetworkDocs]
 
-Specific Network Automation Section for Ansible including a getting started guide
 
-=== Accessing the Ansible docs
+== Accessing the Ansible docs
 
-With the use of the latest command utility ansible-navigator, one can trigger access to all the modules available to them as well as details on specific modules.
-
+* With the use of the latest command utility ansible-navigator, one can trigger access to all the modules available to them as well as details on specific modules.
++
 [source,bash]
 ----
 $ ansible-navigator doc -l -m stdout
@@ -29,64 +30,68 @@ add_host
 amazon.aws.aws_az_facts
 amazon.aws.aws_caller_facts
 amazon.aws.aws_caller_info
-
 ----
 
-A formal introduction to ansible-navigator and how it can be used to run playbooks in the following exercise.
+NOTE: A formal introduction to ansible-navigator and how it can be used to run playbooks in the following exercise.
 
-=== Lets get started
+== Lets get started
 
 That is the end of of your lab briefing!
 
-Once the lab is setup you can click the Green start button image:https://github.com/IPvSean/pictures_for_github/blob/master/start_button.png?raw=true[width=100px,align=left] in the bottom right corner of this window.
+// Once the lab is setup you can click the Green start button image:https://github.com/IPvSean/pictures_for_github/blob/master/start_button.png?raw=true[width=100px,align=left] in the bottom right corner of this window.
 
 
 === Step 1 - Using documentation
 
-Enter the `ansible-navigator` interactive mode on the terminal tab
-
+* Enter the `ansible-navigator` interactive mode on the terminal tab
++
 [source,bash]
 ----
 ansible-navigator
 ----
-
-You will see the following:
++
+.You will see the following:
 ----
 `:doc <plugin>`
 ----
 
-To show how this works,  use the `debug` module by typing `:doc debug`
-
+* To show how this works,  use the `debug` module by typing `:doc debug`
++
 [source,bash]
 ----
 :doc debug
 ----
++
+NOTE: The documentation for the `debug` module is now displayed in you interactive terminal session.  This is a YAML representation of the same exact documentation you would see on link:https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html[docs.ansible.com].  Examples can be cut and paste directly from the module documentation into your Ansible Playbook.
 
-The documentation for the `debug` module is now displayed in you interactive terminal session.  This is a YAML representation of the same exact documentation you would see on link:https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html[docs.ansible.com].  Examples can be cut and paste directly from the module documentation into your Ansible Playbook.
-
-When referring to a non-built in module, there is three important fields:
-
+* When referring to a non-built in module, there is three important fields:
++
 ----
 namespace.collection.module
 ----
++
 .For example:
 ----
 cisco.ios.facts
 ----
-
++
+[NOTE]
+====
 *Explanation of terms:*
 
-- *namespace* - example *cisco* - A namespace is grouping of multiple collections.  The *cisco* namespace contains multiple collections including *ios*, *nxos*, and *iosxr*.
+** *namespace* - example *cisco* - A namespace is grouping of multiple collections.  The *cisco* namespace contains multiple collections including *ios*, *nxos*, and *iosxr*.
 
-- *collection* - example *ios* - A collection is a distribution format for Ansible content that can include playbooks, roles, modules, and plugins.  The *ios* collection contains all the modules for Cisco IOS/IOS-XE
+** *collection* - example *ios* - A collection is a distribution format for Ansible content that can include playbooks, roles, modules, and plugins.  The *ios* collection contains all the modules for Cisco IOS/IOS-XE
 
-- *module* - example facts - Modules are discrete units of code that can be used in a playbook task. For example the *facts* modules will return structured data about that specified system.
+** *module* - example facts - Modules are discrete units of code that can be used in a playbook task. For example the *facts* modules will return structured data about that specified system.
+====
 
-Press the *Esc* key to return to the main menu.  Try repeating the `:doc` command with the `cisco.ios.facts` module.
-
+* Press the *Esc* key to return to the main menu.  Try repeating the `:doc` command with the `cisco.ios.facts` module.
++
 [source,bash]
 ----
 :doc cisco.ios.facts
 ----
 
-We will be using the facts module in our playbook.
++
+NOTE: We will be using the facts module in our playbook.

@@ -95,7 +95,7 @@ NOTE: A play is a list of tasks. Modules are pre-written code that perform the t
 
 * Click on the terminal tab. Execute the Ansible Playbook by running ansible-navigator:
 +
-[source,shell]
+[source,bash]
 ----
 ansible-navigator run facts.yml
 ----

@@ -27,7 +27,7 @@ link:red.ht/NetworkDocs[red.ht/NetworkDocs]
 ----
 ansible-navigator doc -l -m stdout
 ----
-
++
 .You will see the following output:
 ----
 add_host
@@ -53,6 +53,7 @@ That is the end of of your lab briefing!
 ----
 ansible-navigator
 ----
+
 +
 .You will see the following:
 ----

@@ -54,20 +54,20 @@ systemctl start code-server
 # Setup lab assets
 # --------------------------------------------------------------
 # Write a new playbook to create a template from above playbook
-su - $USER -c 'cat > /home/rhel/playbook.yml << EOF
----
-- name: snmp ro/rw string configuration
-  hosts: cisco
-  gather_facts: no
-  tasks:
-    - name: ensure that the desired snmp strings are present
-      cisco.ios.config:
-        commands:
-          - snmp-server community ansible-public RO
-          - snmp-server community ansible-private RW
+# su - $USER -c 'cat > /home/rhel/playbook.yml << EOF
+# ---
+# - name: snmp ro/rw string configuration
+#   hosts: cisco
+#   gather_facts: no
+#   tasks:
+#     - name: ensure that the desired snmp strings are present
+#       cisco.ios.config:
+#         commands:
+#           - snmp-server community ansible-public RO
+#           - snmp-server community ansible-private RW
 
-EOF
-cat /home/rhel/playbook.yml'
+# EOF
+# cat /home/rhel/playbook.yml'
 
 # --------------------------------------------------------------
 # set ansible-navigator default settings

@@ -14,7 +14,7 @@ antora:
       solveButton: true
     - name: module-03
       label: "Using the Debug Module"
-      solveButton: false
+      solveButton: true
 
 tabs:
   - name: "code-server"

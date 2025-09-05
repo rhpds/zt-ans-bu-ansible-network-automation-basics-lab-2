@@ -12,6 +12,13 @@ su - $USER -c 'cat >/home/rhel/facts.yml << EOF
     - name: gather router facts
       cisco.ios.facts:
 
+    - name: display version
+      debug:
+        msg: "The IOS version is: {{ ansible_net_version }}"
+
+    - name: display serial number
+      debug:
+        msg: "The serial number is: {{ ansible_net_serialnum }}"
 EOF
 cat /home/rhel/facts.yml'
 
